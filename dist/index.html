@@ -103,6 +103,30 @@ video{width:100%;background:#151713}
 .clip-grid.room{grid-template-columns:minmax(0,1fr) minmax(0,330px);align-items:start}.clip-grid.room .clip:first-child{grid-column:auto}.clip-grid.room img{width:100%;border-radius:18px}.clip-grid.room .clip video,.clip-grid.room .clip:first-child video{border-radius:18px;aspect-ratio:9/16;width:100%}.clip-grid.room figcaption{flex-wrap:wrap}
 @media(max-width:760px){.clip-grid.room{grid-template-columns:minmax(0,1fr)}.clip-grid.room .clip:last-child{max-width:360px}}
 @media(max-width:760px){.adx{grid-template-columns:1fr}.adx figcaption{flex-wrap:wrap}}
+.request{background:var(--char);color:var(--ivory)}
+.request h2,.request h3{color:var(--ivory)}.request h2 em{color:var(--lime)}.request p,.request .eyebrow{color:#b9beb0}
+.rq{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;margin-top:clamp(36px,5vw,60px)}
+.rq h3{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:28px 0 12px;color:#b9beb0}.rq h3:first-child{margin-top:0}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opt{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:16px 18px;border:1px solid var(--char-line);border-radius:14px;background:var(--char-2);cursor:pointer;transition:border-color .2s,background .2s}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt b{display:block;font-weight:600;font-size:15.5px;color:var(--ivory)}.opt small{display:block;margin-top:3px;font-size:13px;line-height:1.4;color:#a9ae9f}
+.opt .pr{flex:none;font-family:var(--serif);font-style:italic;font-size:21px;color:var(--lime);white-space:nowrap}
+.opt:hover{border-color:rgba(217,238,133,.45)}.opt:has(input:checked){border-color:var(--lime);background:#333a26}
+.opt:has(input:focus-visible){outline:2px solid var(--lime);outline-offset:2px}
+.rq-side{position:sticky;top:96px;padding:24px;border-radius:var(--r);background:var(--char-2);border:1px solid var(--char-line)}
+.rq label.f{display:block;font-size:13px;color:#b9beb0;margin:14px 0 6px}
+.rq input[type=text],.rq input[type=email],.rq textarea{width:100%;box-sizing:border-box;padding:13px 14px;border-radius:12px;border:1px solid var(--char-line);background:var(--char);color:var(--ivory);font:inherit;font-size:15px}
+.rq textarea{min-height:110px;resize:vertical}.rq input:focus,.rq textarea:focus{outline:2px solid var(--lime);outline-offset:1px}
+.drop{display:block;padding:20px;border:1.5px dashed rgba(217,238,133,.5);border-radius:14px;text-align:center;cursor:pointer;font-size:14.5px;color:var(--ivory)}
+.drop small{display:block;margin-top:4px;color:#a9ae9f;font-size:12.5px}.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.thumbs img{width:58px;height:58px;object-fit:cover;border-radius:8px}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:20px;padding-top:16px;border-top:1px solid var(--char-line);font-size:14px;color:#b9beb0}
+.tot b{font-family:var(--serif);font-style:italic;font-weight:400;font-size:34px;color:var(--lime)}
+.rq .btn{width:100%;justify-content:center;margin-top:16px;border:0;cursor:pointer;font-family:inherit}
+.rq .fine{margin-top:12px;font-size:12.5px;line-height:1.5;color:#a9ae9f;max-width:none}.rq .msg{margin-top:12px;font-size:14px;color:var(--lime);max-width:none}
+@media(max-width:900px){.rq{grid-template-columns:1fr}.rq-side{position:static}}
+@media(max-width:560px){.opts{grid-template-columns:1fr}}
 .num{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--olive)}
 
 /* process */
@@ -272,12 +296,38 @@ footer a:hover{text-decoration:underline}
  </div>
 </div></section>
 
+<section id="request" class="request"><div class="wrap">
+ <div class="head reveal"><div><div class="eyebrow">Start here / Send your photos</div><h2>Tell us what <em>you need.</em></h2></div><p>Pick what you&rsquo;d like, add your photos and a short note. We reply with a confirmed quote before any work starts.</p></div>
+ <form class="rq reveal" id="rq-form">
+  <div>
+   <h3>Photos &middot; hotels, rentals and other places</h3>
+   <div class="opts"><label class="opt"><input type="checkbox" name="service" value="Room Refresh" data-price="200"><span><b>Room Refresh</b><small>5 refreshed photos</small></span><span class="pr">$200</span></label><label class="opt"><input type="checkbox" name="service" value="Mini walkthrough add-on" data-price="50"><span><b>+ Mini walkthrough</b><small>Short video from your Room Refresh photos</small></span><span class="pr">$50</span></label><label class="opt"><input type="checkbox" name="service" value="Full Listing" data-price="450"><span><b>Full Listing</b><small>15 photos, every room and the exterior</small></span><span class="pr">$450</span></label><label class="opt"><input type="checkbox" name="service" value="Listing + Walk-In" data-price="650"><span><b>Listing + Walk-In</b><small>15 photos plus an AI walkthrough video</small></span><span class="pr">$650</span></label></div>
+   <h3>Ads &middot; products and services</h3>
+   <div class="opts"><label class="opt"><input type="checkbox" name="service" value="Single Ad" data-price="200"><span><b>Single Ad</b><small>1 finished ad, feed and story sizes</small></span><span class="pr">$200</span></label><label class="opt"><input type="checkbox" name="service" value="Ad Kit" data-price="400"><span><b>Ad Kit</b><small>3 finished ads</small></span><span class="pr">$400</span></label><label class="opt"><input type="checkbox" name="service" value="Monthly 8" data-price="1000" data-monthly><span><b>Monthly 8</b><small>8 new ads every month</small></span><span class="pr">$1,000/mo</span></label><label class="opt"><input type="checkbox" name="service" value="Monthly 12" data-price="1500" data-monthly><span><b>Monthly 12</b><small>12 new ads every month</small></span><span class="pr">$1,500/mo</span></label></div>
+   <h3>Extras</h3>
+   <div class="opts"><label class="opt"><input type="checkbox" name="service" value="AI walkthrough video" data-price="150"><span><b>AI walkthrough video</b><small>Added to any photo package</small></span><span class="pr">$150</span></label><label class="opt"><input type="checkbox" name="service" value="Short video ad" data-price="150"><span><b>Short video ad</b><small>Made from your photos</small></span><span class="pr">$150</span></label><label class="opt"><input type="checkbox" name="service" value="Free sample first" data-price="0"><span><b>Free sample first</b><small>One before-and-after of your photo</small></span><span class="pr">Free</span></label></div>
+  </div>
+  <div class="rq-side">
+   <label class="drop"><input type="file" id="rq-files" name="photos" accept="image/*" multiple>Add your photos<small id="rq-count">Tap to choose from your phone or computer</small></label>
+   <div class="thumbs" id="rq-thumbs"></div>
+   <label class="f" for="rq-msg">What would you like?</label>
+   <textarea id="rq-msg" name="message" placeholder="e.g. Brighter photos of our 6 rooms and a walkthrough for Instagram"></textarea>
+   <label class="f" for="rq-name">Business name</label><input type="text" id="rq-name" name="business" autocomplete="organization">
+   <label class="f" for="rq-email">Your email</label><input type="email" id="rq-email" name="email" autocomplete="email" required>
+   <div class="tot"><span>Estimated total</span><b id="rq-total">$0</b></div>
+   <button class="btn btn-lime" type="submit">Send my request <span class="arr">&nearr;</span></button>
+   <p class="msg" id="rq-status" role="status" hidden></p>
+   <p class="fine">The total is an estimate. Final pricing depends on the scope of your project and is confirmed by email before any work starts. Nothing is charged here.</p>
+  </div>
+ </form>
+</div></section>
+
 <section class="contact" id="contact"><div class="wrap">
  <div class="reveal"><div class="eyebrow">Affordable creativity. Without the travel.</div><h2>Small budget.<br>Better-looking business.</h2></div>
  <div class="reveal">
   <div class="price">As low as $200</div>
   <p>Photo enhancements, hospitality concepts and walkthrough visuals — created remotely with a fast, digital workflow. Pricing and delivery depend on the scope of your project.</p>
-  <div class="actions"><a class="btn btn-dark" href="mailto:oncalladvertisment@gmail.com">Call or email <span class="arr">↗</span></a><a class="btn btn-ghost" href="#work">Find your inspiration <span class="arr">↗</span></a></div>
+  <div class="actions"><a class="btn btn-dark" href="#request">Send your photos <span class="arr">↗</span></a><a class="btn btn-ghost" href="#work">Find your inspiration <span class="arr">↗</span></a></div>
  </div>
 </div></section>
 </main>
@@ -292,6 +342,30 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 els.forEach(function(e){io.observe(e)});}
 var vids=[].slice.call(document.querySelectorAll('video'));
 vids.forEach(function(v){v.addEventListener('play',function(){vids.forEach(function(o){if(o!==v&&!o.paused)o.pause()})})});
+})();
+</script>
+<script>
+(function(){
+ var ENDPOINT=""; // form service URL; empty = open the visitor's email app instead
+ var TO="oncalladvertisment@gmail.com";
+ var f=document.getElementById("rq-form"); if(!f) return;
+ var tot=document.getElementById("rq-total"),files=document.getElementById("rq-files"),thumbs=document.getElementById("rq-thumbs"),count=document.getElementById("rq-count"),status=document.getElementById("rq-status");
+ function fmt(n){return "$"+n.toLocaleString("en-US")}
+ function picked(){return [].slice.call(f.querySelectorAll("input[name=service]:checked"))}
+ function sums(){var once=0,mo=0;picked().forEach(function(i){var p=+i.dataset.price;if(i.hasAttribute("data-monthly"))mo+=p;else once+=p});return{once:once,mo:mo}}
+ function totalText(){var s=sums();if(s.mo&&s.once)return fmt(s.once)+" + "+fmt(s.mo)+"/mo";if(s.mo)return fmt(s.mo)+"/mo";return fmt(s.once)}
+ function update(){tot.textContent=totalText()}
+ f.addEventListener("change",function(e){if(e.target.name==="service")update()});
+ files.addEventListener("change",function(){thumbs.innerHTML="";var n=files.files.length;count.textContent=n?n+" photo"+(n>1?"s":"")+" selected":"Tap to choose from your phone or computer";[].slice.call(files.files,0,12).forEach(function(file){var img=document.createElement("img");img.alt="";img.src=URL.createObjectURL(file);thumbs.appendChild(img)})});
+ function say(t){status.hidden=false;status.textContent=t}
+ f.addEventListener("submit",function(e){e.preventDefault();
+  var list=picked().map(function(i){return i.value}).join(", ")||"Not sure yet";
+  if(ENDPOINT){var fd=new FormData(f);fd.append("services",list);fd.append("estimate",totalText());say("Sending...");
+   fetch(ENDPOINT,{method:"POST",body:fd,headers:{Accept:"application/json"}}).then(function(r){if(!r.ok)throw 0;f.reset();thumbs.innerHTML="";update();say("Thanks. Your request is in and we will email you a confirmed quote.")}).catch(function(){say("That did not send. Please email "+TO+" instead.")});return}
+  var body="Business: "+f.business.value+"\nRequested: "+list+"\nEstimated total: "+totalText()+"\n\n"+f.message.value+"\n\n(Please attach your photos to this email.)";
+  location.href="mailto:"+TO+"?subject="+encodeURIComponent("Photo request"+(f.business.value?" - "+f.business.value:""))+"&body="+encodeURIComponent(body);
+  say("Your email app should open with your request filled in. Attach your photos there and press send.")});
+ update();
 })();
 </script>
 </body></html>
